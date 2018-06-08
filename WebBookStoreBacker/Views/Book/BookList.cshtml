@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "BookList";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/Content/base.css" rel="stylesheet" />
+    <link href="~/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Content/BookList.css" rel="stylesheet" />
+    <script src="~/easyui/jquery-1.8.0.min.js"></script>
+    <script src="~/layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+    <script src="~/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/cookies.jquery.js"></script>
+    <script src="~/Scripts/BookList.js"></script>
+    <script src="~/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/jquery.jqprint-0.3.js"></script>
+</head>
+<body>
+    <div id="dsel">
+        <table>
+            <tr>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" plain="true" onclick="ShowAddEditBox(1)">添加</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" plain="true" onclick="ShowAddEditBox(2)">修改</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" plain="true" onclick="DelBook()">删除</a></td>
+                <td>图书名：</td>
+                <td><input type="text" id="selBookName" /></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" plain="true" onclick="Sel()">查询</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" plain="true" onclick="ExportData()">生成EXCEL</a></td>
+                <td><a href="javascript:;" id="aexcel">导出EXCEL</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true" onclick="Print()">打印数据</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="dg"></div>
+    @*添加数据时使用的窗体，刚开始不显示*@
+    <div id="win">
+        <form id="fm" method="post">
+            <table>
+                <tr>
+                    <td>图书名:</td>
+                    <td><input type="text" id="txtBookName" name="BookName" /></td>
+                </tr>
+                <tr>
+                    <td>出版社:  </td>
+                    <td><input type="text" id="txtBookPublication" name="BookPublication" /></td>
+                </tr>
+                <tr>
+                    <td>出版时间:</td>
+                    <td><input type="text" class="easyui-datebox" id="txtBookPublicTime" name="BookPublicTime" /></td>
+                </tr>
+                <tr>
+                    <td>价格:</td>
+                    <td><input type="text" id="txtBookPrice" name="BookPrice" /></td>
+                </tr>
+                <tr>
+                    <td>ISBN:</td>
+                    <td><input type="text" id="txtBookISBN" name="BookISBN" /></td>
+                </tr>
+                <tr>
+                    <td>图片:</td>
+                    <td>
+                        <div>
+                            <input type="text" id="txtBookImage" name="BookImage" />
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>图片上传:</td>
+                    <td>
+                        <input id="btnUpload" type="button" hidden class="layui-btn layui-btn-sm layui-btn-normal UploadFile" lay-data="{url: '/Book/UploadFile',accept: 'File'}" value="选择" title="重复上传会覆盖已有文件" />
+                        <div class="preview_box"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>作者:</td>
+                    <td><input type="text" id="txtBookAuthor" name="BookAuthor" /></td>
+                </tr>
+                <tr>
+                    <td>译者:</td>
+                    <td><input type="text" id="txtBookTranslator" name="BookTranslator" /></td>
+                </tr>
+                <tr>
+                    <td>介绍:</td>
+                    <td><textarea type="text" id="txtBookIntroduce" name="BookIntroduce"></textarea></td>
+                </tr>
+                <tr>
+                    <td>分类:</td>
+                    <td><input type="text" id="txtBookClassfication" name="BookClassfication" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" plain="true" id="btnAdd" onclick="AddBook()">添加</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" plain="true" id="btnEdit" onclick="EditBook()">更新</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" plain="true" id="btnAdd" onclick="ClearForm()">重置</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" plain="true" id="btnAdd" onclick="CloseForm()">取消</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

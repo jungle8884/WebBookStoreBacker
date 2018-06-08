@@ -1,0 +1,7 @@
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\References\Model.dll
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\References\Model.pdb
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Model\obj\Debug\Model.dll
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Model\obj\Debug\Model.pdb
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\References\Model.dll.config
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

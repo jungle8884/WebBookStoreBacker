@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebBookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Recipient" Type="nvarchar" MaxLength="50" />
+          <Property Name="DetailedAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsDefaultOrNot" Type="int" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookPublication" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookPublicTime" Type="datetime" />
+          <Property Name="BookPrice" Type="float" />
+          <Property Name="BookISBN" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookTranslator" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookIntroduce" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BookClassfication" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BookAuthor">
+          <Key>
+            <PropertyRef Name="BookAuthorId" />
+          </Key>
+          <Property Name="BookAuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookAuthorName" Type="varchar" MaxLength="50" />
+          <Property Name="BookName" Type="varchar" MaxLength="50" />
+          <Property Name="BookAuthorIntroduction" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="BookOrder">
+          <Key>
+            <PropertyRef Name="BookOrderId" />
+          </Key>
+          <Property Name="BookOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookAmount" Type="int" />
+          <Property Name="BookPrice" Type="float" />
+          <Property Name="BookTotalPrice" Type="float" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookRemark">
+          <Key>
+            <PropertyRef Name="BookRemarkId" />
+          </Key>
+          <Property Name="BookRemarkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="BookRemarks" Type="nvarchar" MaxLength="800" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookRemarkReply">
+          <Key>
+            <PropertyRef Name="BookRemarkReplyId" />
+          </Key>
+          <Property Name="BookRemarkReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookRemarkId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BookRemarksReply" Type="nvarchar" MaxLength="800" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Inform">
+          <Key>
+            <PropertyRef Name="InformId" />
+          </Key>
+          <Property Name="InformId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InformText" Type="varchar" MaxLength="200" />
+          <Property Name="IsVisible" Type="int" />
+          <Property Name="InfoType" Type="int" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="ShoppingCartId" />
+          </Key>
+          <Property Name="ShoppingCartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="BookId" Type="int" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookIntroduce" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookISBN" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookPrice" Type="float" />
+          <Property Name="BookAmount" Type="int" />
+          <Property Name="BookTotalPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="QQ" Type="nvarchar" MaxLength="20" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="HeadPic" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="WebComment">
+          <Key>
+            <PropertyRef Name="WebCommentId" />
+          </Key>
+          <Property Name="WebCommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentTitle" Type="varchar" MaxLength="50" />
+          <Property Name="CommentText" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebCommentReply">
+          <Key>
+            <PropertyRef Name="WebCommentReplyId" />
+          </Key>
+          <Property Name="WebCommentReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebCommentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentReplyText" Type="nvarchar" MaxLength="600" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="WebBookStoreModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookAuthor" EntityType="Self.BookAuthor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookOrder" EntityType="Self.BookOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookRemark" EntityType="Self.BookRemark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookRemarkReply" EntityType="Self.BookRemarkReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inform" EntityType="Self.Inform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebComment" EntityType="Self.WebComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebCommentReply" EntityType="Self.WebCommentReply" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebBookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookPublication" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookPublicTime" Type="DateTime" Precision="3" />
+          <Property Name="BookPrice" Type="Double" />
+          <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BookImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookTranslator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookIntroduce" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BookClassfication" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookAuthor">
+          <Key>
+            <PropertyRef Name="BookAuthorId" />
+          </Key>
+          <Property Name="BookAuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookAuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookAuthorIntroduction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookRemark">
+          <Key>
+            <PropertyRef Name="BookRemarkId" />
+          </Key>
+          <Property Name="BookRemarkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="BookRemarks" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="ShoppingCartId" />
+          </Key>
+          <Property Name="ShoppingCartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="BookId" Type="Int32" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookIntroduce" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookPrice" Type="Double" />
+          <Property Name="BookAmount" Type="Int32" />
+          <Property Name="BookTotalPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QQ" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="HeadPic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="WebBookStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="BookAuthors" EntityType="Self.BookAuthor" />
+          <EntitySet Name="BookRemarks" EntityType="Self.BookRemark" />
+          <EntitySet Name="ShoppingCarts" EntityType="Self.ShoppingCart" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Addresses" EntityType="WebBookStoreModel.Address" />
+          <EntitySet Name="BookOrders" EntityType="WebBookStoreModel.BookOrder" />
+          <EntitySet Name="BookRemarkReplies" EntityType="WebBookStoreModel.BookRemarkReply" />
+          <EntitySet Name="WebComments" EntityType="WebBookStoreModel.WebComment" />
+          <EntitySet Name="WebCommentReplies" EntityType="WebBookStoreModel.WebCommentReply" />
+          <EntitySet Name="Informs" EntityType="WebBookStoreModel.Inform" />
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Recipient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DetailedAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefaultOrNot" Type="Int32" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookOrder">
+          <Key>
+            <PropertyRef Name="BookOrderId" />
+          </Key>
+          <Property Name="BookOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookAmount" Type="Int32" />
+          <Property Name="BookPrice" Type="Double" />
+          <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookTotalPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="BookRemarkReply">
+          <Key>
+            <PropertyRef Name="BookRemarkReplyId" />
+          </Key>
+          <Property Name="BookRemarkReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookRemarkId" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookRemarksReply" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebComment">
+          <Key>
+            <PropertyRef Name="WebCommentId" />
+          </Key>
+          <Property Name="WebCommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommentText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebCommentReply">
+          <Key>
+            <PropertyRef Name="WebCommentReplyId" />
+          </Key>
+          <Property Name="WebCommentReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebCommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentReplyText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Inform">
+          <Key>
+            <PropertyRef Name="InformId" />
+          </Key>
+          <Property Name="InformId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InformText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsVisible" Type="Int32" />
+          <Property Name="InfoType" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebBookStoreModelStoreContainer" CdmEntityContainer="WebBookStoreEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="WebBookStoreModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookPublication" ColumnName="BookPublication" />
+                <ScalarProperty Name="BookPublicTime" ColumnName="BookPublicTime" />
+                <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+                <ScalarProperty Name="BookISBN" ColumnName="BookISBN" />
+                <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+                <ScalarProperty Name="BookImage" ColumnName="BookImage" />
+                <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+                <ScalarProperty Name="BookTranslator" ColumnName="BookTranslator" />
+                <ScalarProperty Name="BookIntroduce" ColumnName="BookIntroduce" />
+                <ScalarProperty Name="BookClassfication" ColumnName="BookClassfication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookAuthors">
+            <EntityTypeMapping TypeName="WebBookStoreModel.BookAuthor">
+              <MappingFragment StoreEntitySet="BookAuthor">
+                <ScalarProperty Name="BookAuthorId" ColumnName="BookAuthorId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookAuthorName" ColumnName="BookAuthorName" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookAuthorIntroduction" ColumnName="BookAuthorIntroduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookRemarks">
+            <EntityTypeMapping TypeName="WebBookStoreModel.BookRemark">
+              <MappingFragment StoreEntitySet="BookRemark">
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="BookRemarkId" ColumnName="BookRemarkId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookRemarks" ColumnName="BookRemarks" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCarts">
+            <EntityTypeMapping TypeName="WebBookStoreModel.ShoppingCart">
+              <MappingFragment StoreEntitySet="ShoppingCart">
+                <ScalarProperty Name="ShoppingCartId" ColumnName="ShoppingCartId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookIntroduce" ColumnName="BookIntroduce" />
+                <ScalarProperty Name="BookISBN" ColumnName="BookISBN" />
+                <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+                <ScalarProperty Name="BookAmount" ColumnName="BookAmount" />
+                <ScalarProperty Name="BookTotalPrice" ColumnName="BookTotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WebBookStoreModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="HeadPic" ColumnName="HeadPic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="WebBookStoreModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="IsDefaultOrNot" ColumnName="IsDefaultOrNot" />
+                <ScalarProperty Name="DetailedAddress" ColumnName="DetailedAddress" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookOrders">
+            <EntityTypeMapping TypeName="WebBookStoreModel.BookOrder">
+              <MappingFragment StoreEntitySet="BookOrder">
+                <ScalarProperty Name="BookTotalPrice" ColumnName="BookTotalPrice" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+                <ScalarProperty Name="BookAmount" ColumnName="BookAmount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookOrderId" ColumnName="BookOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookRemarkReplies">
+            <EntityTypeMapping TypeName="WebBookStoreModel.BookRemarkReply">
+              <MappingFragment StoreEntitySet="BookRemarkReply">
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="BookRemarksReply" ColumnName="BookRemarksReply" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookRemarkId" ColumnName="BookRemarkId" />
+                <ScalarProperty Name="BookRemarkReplyId" ColumnName="BookRemarkReplyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebComments">
+            <EntityTypeMapping TypeName="WebBookStoreModel.WebComment">
+              <MappingFragment StoreEntitySet="WebComment">
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="CommentTitle" ColumnName="CommentTitle" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebCommentId" ColumnName="WebCommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebCommentReplies">
+            <EntityTypeMapping TypeName="WebBookStoreModel.WebCommentReply">
+              <MappingFragment StoreEntitySet="WebCommentReply">
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="CommentReplyText" ColumnName="CommentReplyText" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebCommentId" ColumnName="WebCommentId" />
+                <ScalarProperty Name="WebCommentReplyId" ColumnName="WebCommentReplyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Informs">
+            <EntityTypeMapping TypeName="WebBookStoreModel.Inform">
+              <MappingFragment StoreEntitySet="Inform">
+                <ScalarProperty Name="InfoType" ColumnName="InfoType" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="InformText" ColumnName="InformText" />
+                <ScalarProperty Name="InformId" ColumnName="InformId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

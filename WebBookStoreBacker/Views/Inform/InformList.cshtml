@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "InformList";
+}
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/Content/base.css" rel="stylesheet" />
+    <link href="~/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/InformList.css" rel="stylesheet" />
+    <script src="~/easyui/jquery-1.8.0.min.js"></script>
+    <script src="~/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/cookies.jquery.js"></script>
+    <script src="~/Scripts/InformList.js"></script>
+    <script src="~/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/jquery.jqprint-0.3.js"></script>
+</head>
+<body>
+    <div id="dsel">
+        <table>
+            <tr>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" plain="true" onclick="ShowAddEditBox(1)">添加</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" plain="true" onclick="ShowAddEditBox(2)">修改</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" plain="true" onclick="DelInform()">删除</a></td>
+                <td>关键字：</td>
+                <td><input type="text" id="selKeyWords" /></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" plain="true" onclick="Sel()">查询</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" plain="true" onclick="ExportData()">生成EXCEL</a></td>
+                <td><a href="javascript:;" id="aexcel">导出EXCEL</a></td>
+                <td><a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true" onclick="Print()">打印数据</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="dg"></div>
+    @*添加数据时使用的窗体，刚开始不显示*@
+    <div id="win">
+        <form id="fm" method="post">
+            <table>
+                <tr>
+                    <td>通知信息:</td>
+                    <td><input type="text" id="txtInformText" name="InformText" title="显示输入1，隐藏输入0"/></td>
+                </tr>
+                <tr>
+                    <td>是否显示:  </td>
+                    <td>
+                        <input type="text" id="txtIsVisible" name="IsVisible" placeholder="显示输入1，隐藏输入0" title="显示输入1，隐藏输入0"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>信息类型:  </td>
+                    <td><input type="text" id="txtInfoType" name="InfoType" placeholder="系统信息输入1，书籍信息输入0"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:center;">
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" plain="true" id="btnAdd" onclick="AddInform()">添加</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" plain="true" id="btnEdit" onclick="EditInform()">更新</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" plain="true" id="btnAdd" onclick="ClearForm()">重置</a>
+                        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" plain="true" id="btnAdd" onclick="CloseForm()">取消</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

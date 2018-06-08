@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookPublication" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookPublicTime" Type="DateTime" Precision="3" />
+    <Property Name="BookPrice" Type="Double" />
+    <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BookImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookTranslator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookIntroduce" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="BookClassfication" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BookAuthor">
+    <Key>
+      <PropertyRef Name="BookAuthorId" />
+    </Key>
+    <Property Name="BookAuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="BookAuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BookAuthorIntroduction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BookRemark">
+    <Key>
+      <PropertyRef Name="BookRemarkId" />
+    </Key>
+    <Property Name="BookRemarkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BookRemarks" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ShoppingCartId" />
+    </Key>
+    <Property Name="ShoppingCartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookIntroduce" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookPrice" Type="Double" />
+    <Property Name="BookAmount" Type="Int32" />
+    <Property Name="BookTotalPrice" Type="Double" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QQ" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="HeadPic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="WebBookStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="BookAuthors" EntityType="Self.BookAuthor" />
+    <EntitySet Name="BookRemarks" EntityType="Self.BookRemark" />
+    <EntitySet Name="ShoppingCarts" EntityType="Self.ShoppingCart" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Addresses" EntityType="WebBookStoreModel.Address" />
+    <EntitySet Name="BookOrders" EntityType="WebBookStoreModel.BookOrder" />
+    <EntitySet Name="BookRemarkReplies" EntityType="WebBookStoreModel.BookRemarkReply" />
+    <EntitySet Name="WebComments" EntityType="WebBookStoreModel.WebComment" />
+    <EntitySet Name="WebCommentReplies" EntityType="WebBookStoreModel.WebCommentReply" />
+    <EntitySet Name="Informs" EntityType="WebBookStoreModel.Inform" />
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Recipient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DetailedAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefaultOrNot" Type="Int32" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BookOrder">
+    <Key>
+      <PropertyRef Name="BookOrderId" />
+    </Key>
+    <Property Name="BookOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BookAmount" Type="Int32" />
+    <Property Name="BookPrice" Type="Double" />
+    <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookTotalPrice" Type="Double" />
+  </EntityType>
+  <EntityType Name="BookRemarkReply">
+    <Key>
+      <PropertyRef Name="BookRemarkReplyId" />
+    </Key>
+    <Property Name="BookRemarkReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookRemarkId" Type="Int32" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BookRemarksReply" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WebComment">
+    <Key>
+      <PropertyRef Name="WebCommentId" />
+    </Key>
+    <Property Name="WebCommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CommentTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CommentText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WebCommentReply">
+    <Key>
+      <PropertyRef Name="WebCommentReplyId" />
+    </Key>
+    <Property Name="WebCommentReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WebCommentId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CommentReplyText" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="ClientIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Inform">
+    <Key>
+      <PropertyRef Name="InformId" />
+    </Key>
+    <Property Name="InformId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InformText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsVisible" Type="Int32" />
+    <Property Name="InfoType" Type="Int32" />
+  </EntityType>
+</Schema>

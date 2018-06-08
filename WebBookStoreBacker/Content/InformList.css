@@ -1,0 +1,23 @@
+﻿#dsel {
+    height: 33px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#win table {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#win td {
+    padding: 5px;
+}
+
+#win input {
+    width: 200px;
+}
+
+#win textarea {
+    width: 200px;
+    height: 80px;
+}

@@ -1,0 +1,6 @@
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\References\Dal.dll
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\References\Dal.pdb
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Dal\obj\Debug\Dal.dll
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Dal\obj\Debug\Dal.pdb
+D:\Coding\Project\WebBookStoreBacker\WebBookStoreBacker\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache

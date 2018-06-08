@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Recipient" Type="nvarchar" MaxLength="50" />
+    <Property Name="DetailedAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsDefaultOrNot" Type="int" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookPublication" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookPublicTime" Type="datetime" />
+    <Property Name="BookPrice" Type="float" />
+    <Property Name="BookISBN" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="BookImage" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookAuthor" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookTranslator" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookIntroduce" Type="nvarchar" MaxLength="1000" />
+    <Property Name="BookClassfication" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="BookAuthor">
+    <Key>
+      <PropertyRef Name="BookAuthorId" />
+    </Key>
+    <Property Name="BookAuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="BookAuthorName" Type="varchar" MaxLength="50" />
+    <Property Name="BookName" Type="varchar" MaxLength="50" />
+    <Property Name="BookAuthorIntroduction" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="BookOrder">
+    <Key>
+      <PropertyRef Name="BookOrderId" />
+    </Key>
+    <Property Name="BookOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookAmount" Type="int" />
+    <Property Name="BookPrice" Type="float" />
+    <Property Name="BookTotalPrice" Type="float" />
+    <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BookRemark">
+    <Key>
+      <PropertyRef Name="BookRemarkId" />
+    </Key>
+    <Property Name="BookRemarkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BookRemarks" Type="nvarchar" MaxLength="800" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BookRemarkReply">
+    <Key>
+      <PropertyRef Name="BookRemarkReplyId" />
+    </Key>
+    <Property Name="BookRemarkReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookRemarkId" Type="int" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="BookRemarksReply" Type="nvarchar" MaxLength="800" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Inform">
+    <Key>
+      <PropertyRef Name="InformId" />
+    </Key>
+    <Property Name="InformId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InformText" Type="varchar" MaxLength="200" />
+    <Property Name="IsVisible" Type="int" />
+    <Property Name="InfoType" Type="int" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ShoppingCartId" />
+    </Key>
+    <Property Name="ShoppingCartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookIntroduce" Type="nvarchar" MaxLength="255" />
+    <Property Name="BookISBN" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookPrice" Type="float" />
+    <Property Name="BookAmount" Type="int" />
+    <Property Name="BookTotalPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Pwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="QQ" Type="nvarchar" MaxLength="20" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="HeadPic" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WebComment">
+    <Key>
+      <PropertyRef Name="WebCommentId" />
+    </Key>
+    <Property Name="WebCommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CommentTitle" Type="varchar" MaxLength="50" />
+    <Property Name="CommentText" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WebCommentReply">
+    <Key>
+      <PropertyRef Name="WebCommentReplyId" />
+    </Key>
+    <Property Name="WebCommentReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WebCommentId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CommentReplyText" Type="nvarchar" MaxLength="600" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="ClientIP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="WebBookStoreModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookAuthor" EntityType="Self.BookAuthor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookOrder" EntityType="Self.BookOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookRemark" EntityType="Self.BookRemark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookRemarkReply" EntityType="Self.BookRemarkReply" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inform" EntityType="Self.Inform" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebComment" EntityType="Self.WebComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebCommentReply" EntityType="Self.WebCommentReply" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

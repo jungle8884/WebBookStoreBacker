@@ -1,0 +1,65 @@
+﻿/*公共样式*/
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+ul, li {
+    list-style: none;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #333333;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+fieldset, img, abbr, acronym {
+    border: 0px;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+}
+
+    a:hover {
+        color: #67D179;
+        cursor: pointer;
+        text-decoration: none;
+    }

@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Main";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/Content/base.css" rel="stylesheet" />
+    <link href="~/easyui/themes/gray/easyui.css" rel="stylesheet" />
+    <link href="~/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <script src="~/easyui/jquery-1.8.0.min.js"></script>
+    <script src="~/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/cookies.jquery.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',split:true" style="height:60px;" id="header">
+        <div id="toplogo"></div>
+        <div id="topright">
+            <a id="btnexit" class="easyui-linkbutton" data-options="iconCls:'icon-no'" plain=true onclick="Exit()">注销用户</a>
+        </div>
+    </div>
+    <div data-options="region:'west',title:'West',split:true" style="width:175px;" title="功能选项" id="main-left">
+        <div class="easyui-accordion" data-options="fit:true">
+            <div title="用户管理">
+                <ul class="easyui-tree">
+                    <li id="/User/UserList?type=0" title="用户信息管理">用户信息管理</li>
+                    <li id="/User/GetReport" title="用户统计分析">用户统计分析</li>
+                </ul>
+            </div>
+            <div title="图书管理">
+                <ul class="easyui-tree">
+                    <li id="/Book/BookList" title="图书信息管理">图书信息管理</li>
+                </ul>
+            </div>
+            <div title="留言板管理">
+                <ul class="easyui-tree">
+                    <li id="/WebComment/WebCommentList" title="留言板信息管理">留言板信息管理</li>
+                </ul>
+            </div>
+            <div title="公告栏管理">
+                <ul class="easyui-tree">
+                    <li id="/Inform/InformList" title="公告栏信息管理">公告栏信息管理</li>
+                </ul>
+            </div>
+            <div title="订单管理">
+                <ul class="easyui-tree">
+                    <li id="/Order/OrderList" title="订单信息管理">订单信息管理</li>
+                </ul>
+            </div>
+            <div title="管理员管理">
+                <ul class="easyui-tree">
+                    <li id="/User/UserList?type=1" title="系统管理员信息管理">系统管理员信息管理</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'" id="main-right">
+        <div id="tabs" class="easyui-tabs" data-options="fit:true">
+            <div title="首页" id="mainmg"></div>
+        </div>
+    </div>
+</body>
+</html>

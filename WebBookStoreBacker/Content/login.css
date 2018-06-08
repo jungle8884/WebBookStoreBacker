@@ -1,0 +1,20 @@
+﻿
+body {
+    background: url(../Imgs/login_bgx.jpg), no-repeat;
+    background-size:cover;
+}
+#dlogin caption {
+    font-weight:800;
+    font-size:large;
+}
+#dlogin table {
+    width: 400px;
+    height: 200px;
+    margin: 200px auto;
+    color: #fff;
+    /*border: solid 1px red;*/
+}
+.input_login {
+    width: 300px;
+    height:30px;
+}

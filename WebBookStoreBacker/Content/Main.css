@@ -1,0 +1,21 @@
+﻿#header {
+    background-image: url("../Imgs/banner-pic.gif");
+}
+
+#mainmg {
+    background-image: url('../Imgs/Bg.png');
+    background-size: cover;
+}
+
+#toplogo {
+    /*float: left;
+    background-image: url('../Imgs/logo.png');
+    width: 82px;
+    height: 50px;*/
+}
+
+#topright {
+    float: right;
+    margin-top: 15px;
+}
+
